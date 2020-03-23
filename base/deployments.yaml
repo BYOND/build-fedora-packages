@@ -21,7 +21,12 @@ spec:
             - name: packages
               mountPath: /usr/share/nginx/html
               subPath: fedora
+            - name: nginx-config
+              mountPath: /etc/nginx
       volumes:
         - name: packages
           persistentVolumeClaim:
             claimName: packages
+        - name: nginx-config
+          configMap:
+            name: fedora-repository-nginx

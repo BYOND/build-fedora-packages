@@ -4,3 +4,7 @@ resources:
   - services.yaml
   - ingresses.yaml
   - deployments.yaml
+configMapGenerator:
+  - name: fedora-repository-nginx
+    files:
+      - configs/nginx.conf
