@@ -29,6 +29,16 @@ pipeline {
               }
             }
           }
+
+          stage('Build DreamMaker Package') {
+            steps {
+              container('rpmdev-fedora') {
+                sh 'rpmdev-wipetree'
+                sh 'cp /releases/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
+                sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i386 specs/byond-dreammaker.spec'
+              }
+            }
+          }
         }
       }
     }
