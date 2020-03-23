@@ -14,8 +14,8 @@ Provides the BYOND language compiler, known as DreamMaker.
 cd %{_builddir}
 rm -rf byond
 /usr/bin/unzip -qq %{_sourcedir}/%{_byondmajor}.%{_byondminor}_byond_linux.zip
-cp %{_sourcedir}/byond/legal.txt LICENSE
-/usr/bin/gzip %{_sourcedir}/byond/man/man6/DreamMaker.6
+cp byond/legal.txt LICENSE
+/usr/bin/gzip byond/man/man6/DreamMaker.6
 
 %build
 

@@ -14,7 +14,7 @@ Provides common BYOND libraries needed by BYOND tools.
 cd %{_builddir}
 rm -rf byond
 /usr/bin/unzip -qq %{_sourcedir}/%{_byondmajor}.%{_byondminor}_byond_linux.zip
-cp %{_sourcedir}/byond/legal.txt LICENSE
+cp byond/legal.txt LICENSE
 
 %build
 
