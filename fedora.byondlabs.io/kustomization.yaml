@@ -1,0 +1,5 @@
+namespace: jenkins
+bases:
+  - ../base
+patches:
+  - ingresses.yaml

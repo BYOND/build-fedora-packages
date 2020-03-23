@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: fedora-repository
+spec:
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - backend:
+              serviceName: fedora-repository
+              servicePort: 80

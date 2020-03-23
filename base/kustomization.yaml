@@ -1,0 +1,7 @@
+commonLabels:
+  app: fedora
+resources:
+  - pvcs.yaml
+  - services.yaml
+  - ingresses.yaml
+  - deployments.yaml

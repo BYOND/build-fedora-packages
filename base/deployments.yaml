@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fedora-repository
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fedora
+  template:
+    metadata:
+      labels:
+        app: fedora
+    spec:
+      containers:
+        - name: fedora-repository
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: fedora-packages
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: fedora-packages
+          persistentVolumeClaim:
+            claimName: fedora-packages
