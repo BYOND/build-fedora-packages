@@ -64,6 +64,7 @@ pipeline {
               container('rpmdev-fedora') {
                 sh 'rpmdev-setuptree'
                 sh 'cp repo-config/* ~/rpmbuild/SOURCES/'
+                sh 'gpg --batch --import /secret/stephen001-byondlabs.io.asc || true'
                 sh 'gpg --batch --yes --export -a \'Stephen001 @ BYONDLabs <stephen001@byondlabs.io>\' > ~/rpmbuild/SOURCES/RPM-GPG-KEY-byondlabs'
                 sh "rpmbuild -bb --define '_releasever ${RELEASE}' specs/repo.spec"
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i686/Packages /data/fedora/${RELEASE}/base/x86_64/Packages"
@@ -77,7 +78,9 @@ pipeline {
             steps {
               container('rpmdev-fedora') {
                 sh 'gpg --batch --import /secret/stephen001-byondlabs.io.asc || true'
-                sh 'echo \'%_gpg_name "Stephen001 @ BYONDLabs <stephen001@byondlabs.io>"\' > ~/.rpmmacros'
+                sh 'echo \'%_gpg_name Stephen001 @ BYONDLabs\' > ~/.rpmmacros'
+                sh 'echo \'%_signature gpg\' >> ~/.rpmmacros'
+                sh 'echo \'%_gpgbin /usr/bin/gpg\' >> ~/.rpmmacros'
                 sh "rpm --resign /data/fedora/${RELEASE}/base/i686/Packages/*.rpm"
                 sh "rpm --resign /data/fedora/${RELEASE}/base/x86_64/Packages/*.rpm"
                 sh "createrepo /data/fedora/${RELEASE}/base/i686"
