@@ -10,9 +10,15 @@ spec:
       volumeMounts:
         - name: packages
           mountPath: /data
+        - name: package-signing-key
+          mountPath: /secret
+          readOnly: true
   securityContext:
     fsGroup: 1000
   volumes:
     - name: packages
       persistentVolumeClaim:
         claimName: packages
+    - name: package-signing-key
+      secret:
+        secretName: package-signing-key
