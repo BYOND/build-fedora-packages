@@ -8,16 +8,11 @@ spec:
       command:
         - cat
       volumeMounts:
-        - name: upstream-releases
-          mountPath: /releases
-        - name: fedora-packages
-          mountPath: /mnt/packages
+        - name: packages
+          mountPath: /data
   securityContext:
     fsGroup: 1000
   volumes:
-    - name: upstream-releases
+    - name: packages
       persistentVolumeClaim:
-        claimName: upstream-releases
-    - name: fedora-packages
-      persistentVolumeClaim:
-        claimName: fedora-packages
+        claimName: packages

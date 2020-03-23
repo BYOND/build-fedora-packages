@@ -18,9 +18,10 @@ spec:
           ports:
             - containerPort: 80
           volumeMounts:
-            - name: fedora-packages
+            - name: packages
               mountPath: /usr/share/nginx/html
+              subPath: fedora
       volumes:
-        - name: fedora-packages
+        - name: packages
           persistentVolumeClaim:
-            claimName: fedora-packages
+            claimName: packages
