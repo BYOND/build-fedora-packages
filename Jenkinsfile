@@ -31,7 +31,7 @@ pipeline {
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i386/Packages"
                 sh "cp ~/rpmbuild/RPMS/i386/byond-common-512.1488-1.i386.rpm /data/fedora/${RELEASE}/base/i386/Packages/"
                 sh "createrepo /data/fedora/${RELEASE}/base/i386"
-                sh "gpg --batch --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
+                sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
               }
             }
           }
@@ -47,7 +47,7 @@ pipeline {
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i386/Packages"
                 sh "cp ~/rpmbuild/RPMS/i386/byond-dreammaker-512.1488-1.i386.rpm /data/fedora/${RELEASE}/base/i386/Packages/"
                 sh "createrepo /data/fedora/${RELEASE}/base/i386"
-                sh "gpg --batch --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
+                sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
               }
             }
           }
@@ -63,7 +63,28 @@ pipeline {
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i386/Packages"
                 sh "cp ~/rpmbuild/RPMS/i386/byond-dreamdaemon-512.1488-1.i386.rpm /data/fedora/${RELEASE}/base/i386/Packages/"
                 sh "createrepo /data/fedora/${RELEASE}/base/i386"
-                sh "gpg --batch --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
+                sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
+              }
+            }
+          }
+
+          stage('Build Repo Config') {
+            steps {
+              container('rpmdev-fedora') {
+                sh 'gpg --batch --import /secret/stephen001-byondlabs.io.asc || true'
+                sh 'echo \'%_gpg_name "Stephen001 @ BYONDLabs <stephen001@byondlabs.io>"\' > ~/.rpmmacros'
+                sh 'rpmdev-setuptree'
+                sh 'cp repo-config/* ~/rpmbuild/SOURCES/'
+                sh 'gpg --batch --yes --export -a \'Stephen001 @ BYONDLabs <stephen001@byondlabs.io>\' > ~/rpmbuild/SOURCES/RPM-GPG-KEY-byondlabs'
+                sh "rpmbuild -bb --define '_releasever ${RELEASE}' specs/repo.spec"
+                sh "mkdir -p /data/fedora/${RELEASE}/base/i386/Packages"
+                sh "mkdir -p /data/fedora/${RELEASE}/base/x86_64/Packages"
+                sh "cp ~/rpmbuild/RPMS/noarch/byondlabs-release-${RELEASE}-1.noarch.rpm /data/fedora/${RELEASE}/base/i386/Packages/"
+                sh "cp ~/rpmbuild/RPMS/noarch/byondlabs-release-${RELEASE}-1.noarch.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
+                sh "createrepo /data/fedora/${RELEASE}/base/i386"
+                sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
+                sh "createrepo /data/fedora/${RELEASE}/base/x86_64"
+                sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/x86_64/repodata/repomd.xml"
               }
             }
           }
