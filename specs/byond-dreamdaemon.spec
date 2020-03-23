@@ -1,6 +1,6 @@
 Name:       byond-dreamdaemon
 Version:    %{_byondmajor}.%{_byondminor}
-Release:    %{_releaseversion}
+Release:    %{_releaseversion}%{?dist}
 Summary:    BYOND Hosting Process
 URL:        http://www.byond.com/
 License:    BYOND

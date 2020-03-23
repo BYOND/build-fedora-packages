@@ -1,6 +1,6 @@
 Name:       byond-common
 Version:    %{_byondmajor}.%{_byondminor}
-Release:    %{_releaseversion}
+Release:    %{_releaseversion}%{?dist}
 Summary:    Common BYOND libraries
 URL:        http://www.byond.com/
 License:    BYOND

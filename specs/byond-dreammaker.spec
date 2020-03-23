@@ -1,6 +1,6 @@
 Name:       byond-dreammaker
 Version:    %{_byondmajor}.%{_byondminor}
-Release:    %{_releaseversion}
+Release:    %{_releaseversion}%{?dist}
 Summary:    BYOND Language Compiler
 URL:        http://www.byond.com/
 License:    BYOND
