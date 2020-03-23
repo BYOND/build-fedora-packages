@@ -16,14 +16,16 @@ pipeline {
         axes {
           axis {
             name 'RELEASE'
-            values '30', '31'
+            values '31', 'rawhide'
           }
         }
         stages {
           stage('Build Packages') {
             steps {
-              container('fedora') {
-                sh 'echo Hello!'
+              container('rpmdev-fedora') {
+                sh 'rpmdev-setuptree'
+                sh 'cp /releases/stable/512/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
+                sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i386 specs/byond-common.spec'
               }
             }
           }

@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-    - name: fedora
-      image: fedora:30
+    - name: rpmdev-fedora
+      image: stephen001/rpmdev-fedora:rawhide
       tty: true
       command:
         - cat
