@@ -20,11 +20,11 @@ pipeline {
           }
         }
         stages {
-          stage('Build Packages') {
+          stage('Build Common Package') {
             steps {
               container('rpmdev-fedora') {
                 sh 'rpmdev-setuptree'
-                sh 'cp /releases/stable/512/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
+                sh 'cp /releases/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i386 specs/byond-common.spec'
               }
             }
