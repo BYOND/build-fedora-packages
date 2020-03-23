@@ -21,8 +21,8 @@ pipeline {
         }
         stages {
           stage('Build Packages') {
-            container('fedora') {
-              steps {
+            steps {
+              container('fedora') {
                 sh 'Hello!'
               }
             }
