@@ -29,8 +29,8 @@ pipeline {
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-common.spec'
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i686/Packages"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-common-512.1488-1.i686.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-common-512.1488-1.i686.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
+                sh "cp ~/rpmbuild/RPMS/i686/byond-common-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
+                sh "cp ~/rpmbuild/RPMS/i686/byond-common-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
                 sh "createrepo /data/fedora/${RELEASE}/base/i686"
                 sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/i686/repodata/repomd.xml"
                 sh "createrepo /data/fedora/${RELEASE}/base/x86_64"
@@ -48,8 +48,8 @@ pipeline {
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-dreammaker.spec'
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i686/Packages"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-dreammaker-512.1488-1.i686.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-dreammaker-512.1488-1.i686.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
+                sh "cp ~/rpmbuild/RPMS/i686/byond-dreammaker-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
+                sh "cp ~/rpmbuild/RPMS/i686/byond-dreammaker-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
                 sh "createrepo /data/fedora/${RELEASE}/base/i686"
                 sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/i686/repodata/repomd.xml"
                 sh "createrepo /data/fedora/${RELEASE}/base/x86_64"
@@ -67,8 +67,8 @@ pipeline {
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-dreamdaemon.spec'
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i686/Packages"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-dreamdaemon-512.1488-1.i686.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-dreamdaemon-512.1488-1.i686.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
+                sh "cp ~/rpmbuild/RPMS/i686/byond-dreamdaemon-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
+                sh "cp ~/rpmbuild/RPMS/i686/byond-dreamdaemon-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
                 sh "createrepo /data/fedora/${RELEASE}/base/i686"
                 sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/i686/repodata/repomd.xml"
                 sh "createrepo /data/fedora/${RELEASE}/base/x86_64"
