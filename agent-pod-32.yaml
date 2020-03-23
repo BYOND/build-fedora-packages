@@ -4,6 +4,7 @@ spec:
   containers:
     - name: rpmdev-fedora
       image: stephen001/rpmdev-fedora:32
+      imagePullPolicy: Always
       tty: true
       command:
         - cat
