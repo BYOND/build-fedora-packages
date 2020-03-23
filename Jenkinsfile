@@ -31,7 +31,7 @@ pipeline {
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i386/Packages"
                 sh "cp ~/rpmbuild/RPMS/i386/byond-common-512.1488-1.i386.rpm /data/fedora/${RELEASE}/base/i386/Packages/"
                 sh "createrepo /data/fedora/${RELEASE}/base/i386"
-                sh "gpg --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
+                sh "gpg --batch --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
               }
             }
           }
@@ -47,7 +47,7 @@ pipeline {
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i386/Packages"
                 sh "cp ~/rpmbuild/RPMS/i386/byond-dreammaker-512.1488-1.i386.rpm /data/fedora/${RELEASE}/base/i386/Packages/"
                 sh "createrepo /data/fedora/${RELEASE}/base/i386"
-                sh "gpg --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
+                sh "gpg --batch --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
               }
             }
           }
@@ -63,7 +63,7 @@ pipeline {
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i386/Packages"
                 sh "cp ~/rpmbuild/RPMS/i386/byond-dreamdaemon-512.1488-1.i386.rpm /data/fedora/${RELEASE}/base/i386/Packages/"
                 sh "createrepo /data/fedora/${RELEASE}/base/i386"
-                sh "gpg --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
+                sh "gpg --batch --detach-sign --armor /data/fedora/${RELEASE}/base/i386/repodata/repomd.xml"
               }
             }
           }
