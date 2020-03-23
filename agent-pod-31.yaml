@@ -10,9 +10,14 @@ spec:
       volumeMounts:
         - name: upstream-releases
           mountPath: /releases
+        - name: fedora-packages
+          mountPath: /packages
   securityContext:
     fsGroup: 1000
   volumes:
     - name: upstream-releases
       persistentVolumeClaim:
         claimName: upstream-releases
+    - name: fedora-packages
+      persistentVolumeClaim:
+        claimName: fedora-packages
