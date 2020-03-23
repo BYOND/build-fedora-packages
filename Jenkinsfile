@@ -16,7 +16,7 @@ pipeline {
         axes {
           axis {
             name 'RELEASE'
-            values '30', '31', '32', 'rawhide'
+            values '30', '31', '32'
           }
         }
         stages {
@@ -83,9 +83,9 @@ pipeline {
                 sh 'echo \'%_gpgbin /usr/bin/gpg\' >> ~/.rpmmacros'
                 sh "rpm --resign /data/fedora/${RELEASE}/base/i686/Packages/*.rpm"
                 sh "rpm --resign /data/fedora/${RELEASE}/base/x86_64/Packages/*.rpm"
-                sh "createrepo /data/fedora/${RELEASE}/base/i686"
+                sh "createrepo -g group.xml /data/fedora/${RELEASE}/base/i686"
                 sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/i686/repodata/repomd.xml"
-                sh "createrepo /data/fedora/${RELEASE}/base/x86_64"
+                sh "createrepo -g group.xml /data/fedora/${RELEASE}/base/x86_64"
                 sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/x86_64/repodata/repomd.xml"
               }
             }

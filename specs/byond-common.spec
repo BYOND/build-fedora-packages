@@ -4,6 +4,7 @@ Release:    %{_releaseversion}%{?dist}
 Summary:    Common BYOND libraries
 URL:        http://www.byond.com/
 License:    BYOND
+Group:      BYOND
 Requires:   libgcc, glibc, libstdc++
 Source0:    http://www.byond.com/download/build/%{_byondmajor}/%{_byondmajor}.%{_byondminor}_byond_linux.zip
 

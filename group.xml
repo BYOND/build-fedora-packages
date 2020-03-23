@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE comps PUBLIC "-//Red Hat, Inc.//DTD Comps info//EN" "comps.dtd">
+<comps> 
+  <group>
+   <id>byond</id>
+   <default>false</default>
+   <uservisible>true</uservisible>
+   <display_order>1024</display_order>
+   <name>BYOND</name>
+   <description>BYOND Tools</description>
+    <packagelist>
+      <packagereq type="mandatory">byond-common</packagereq>
+      <packagereq type="mandatory">byond-dreammaker</packagereq>
+      <packagereq type="mandatory">byond-dreamdaemon</packagereq>
+    </packagelist>
+  </group>
+</comps>
