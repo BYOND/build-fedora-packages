@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+    - name: rpmdev-fedora
+      image: stephen001/rpmdev-fedora:32
+      tty: true
+      command:
+        - cat
+      volumeMounts:
+        - name: packages
+          mountPath: /data
+  securityContext:
+    fsGroup: 1000
+  volumes:
+    - name: packages
+      persistentVolumeClaim:
+        claimName: packages
