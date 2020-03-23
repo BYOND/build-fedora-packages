@@ -24,6 +24,7 @@ pipeline {
             steps {
               container('rpmdev-fedora') {
                 sh 'gpg --batch --import /secret/stephen001-byondlabs.io.asc || true'
+                sh 'echo \'%_gpg_name "stephen001@byondlabs.io"\' > ~/.rpmmacros'
                 sh 'rpmdev-setuptree'
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --sign --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i386 specs/byond-common.spec'
@@ -38,6 +39,7 @@ pipeline {
             steps {
               container('rpmdev-fedora') {
                 sh 'gpg --batch --import /secret/stephen001-byondlabs.io.asc || true'
+                sh 'echo \'%_gpg_name "stephen001@byondlabs.io"\' > ~/.rpmmacros'
                 sh 'rpmdev-setuptree'
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --sign --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i386 specs/byond-dreammaker.spec'
@@ -52,6 +54,7 @@ pipeline {
             steps {
               container('rpmdev-fedora') {
                 sh 'gpg --batch --import /secret/stephen001-byondlabs.io.asc || true'
+                sh 'echo \'%_gpg_name "stephen001@byondlabs.io"\' > ~/.rpmmacros'
                 sh 'rpmdev-setuptree'
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --sign --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i386 specs/byond-dreamdaemon.spec'
