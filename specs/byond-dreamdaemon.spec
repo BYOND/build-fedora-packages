@@ -5,7 +5,7 @@ Summary:    BYOND Hosting Process
 URL:        http://www.byond.com/
 License:    BYOND
 Group:      BYOND
-Requires:   libgcc, glibc, libstdc++, byond-common >= %{_byondmajor}.%{_byondminor}-%{_releaseversion}
+Requires:   libgcc(x86-32), glibc(x86-32), libstdc++(x86-32), byond-common(x86-32) >= %{_byondmajor}.%{_byondminor}-%{_releaseversion}
 Source0:    http://www.byond.com/download/build/%{_byondmajor}/%{_byondmajor}.%{_byondminor}_byond_linux.zip
 
 %description

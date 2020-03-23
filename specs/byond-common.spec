@@ -5,7 +5,8 @@ Summary:    Common BYOND libraries
 URL:        http://www.byond.com/
 License:    BYOND
 Group:      BYOND
-Requires:   libgcc, glibc, libstdc++
+Requires:   libgcc(x86-32), glibc(x86-32), libstdc++(x86-32)
+Provides:   byond-common, libbyond.so, libext.so
 Source0:    http://www.byond.com/download/build/%{_byondmajor}/%{_byondmajor}.%{_byondminor}_byond_linux.zip
 
 %description
