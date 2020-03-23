@@ -23,7 +23,7 @@ pipeline {
           stage('Build Packages') {
             steps {
               container('fedora') {
-                sh 'Hello!'
+                sh 'echo Hello!'
               }
             }
           }
