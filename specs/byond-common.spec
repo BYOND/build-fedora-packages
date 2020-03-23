@@ -12,7 +12,7 @@ Provides common BYOND libraries needed by BYOND tools.
 
 %prep
 cd %{_builddir}
-rm -rf .
+rm -rf *
 /usr/bin/unzip -qq %{_sourcedir}/%{_byondmajor}.%{_byondminor}_byond_linux.zip
 cp byond/legal.txt LICENSE
 
