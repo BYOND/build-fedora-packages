@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Native BYOND on Fedora">
+  <meta name="author" content="BYONDLabs">
+
+  <title>Native BYOND - Fedora</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/scrolling-nav.css" rel="stylesheet">
+
+  <!-- Our favicon -->
+  <link rel="icon" type="image/png" href="images/icon-16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="images/icon-16.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="images/icon.png">
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Native BYOND on Fedora</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#installing">Installing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#packages">Packages</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-primary text-white">
+    <div class="container text-center">
+      <h1>Native BYOND on Fedora</h1>
+      <p class="lead">Install BYOND's native Linux compiler and hosting tools via Fedora's package manager!</p>
+    </div>
+  </header>
+
+  <section id="installing">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Installing the repository via DNF</h2>
+          <p class="lead">Installation via DNF can be done either graphically by clicking on the relevant link for your version of Fedora:</p>
+          <ul>
+            <li><a class="nav-link js-scroll-trigger" href="32/base/x86_64/Packages/byondlabs-release-32-1.noarch.rpm">Fedora 32 - Beta</a></li>
+            <li><a class="nav-link js-scroll-trigger" href="31/base/x86_64/Packages/byondlabs-release-31-1.noarch.rpm">Fedora 31</a></li>
+            <li><a class="nav-link js-scroll-trigger" href="30/base/x86_64/Packages/byondlabs-release-30-1.noarch.rpm">Fedora 30</a></li>
+          </ul>
+          <p class="lead">Alternatively, you can install via the command line with:</p>
+            <p><kbd>sudo dnf install -y "https://fedora.byondlabs.io/$(. /etc/os-release; echo ${VERSION_ID})/base/x86_64/Packages/byondlabs-release-$(. /etc/os-release; echo ${VERSION_ID})-1.noarch.rpm"</kbd></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Packages</h2>
+          <p class="lead">This repository currently provides two packages:</p>
+          <ul>
+              <li><p class="lead"><code>byond-dreammaker</code> for the Linux DM compiler</p></li>
+              <li><p class="lead"><code>byond-dreamdaemon</code> for the Linux BYOND world host</p></li>
+          </ul>
+          <p class="lead">In addition, there is an install group that can be used to get all BYOND packages:</p>
+          <p><kbd>sudo dnf groupinstall BYOND</kbd></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; BYONDLabs 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="js/scrolling-nav.js"></script>
+
+</body>
+
+</html>

@@ -96,5 +96,19 @@ pipeline {
         }
       }
     }
+
+    stage("Copy Site Root") {
+      agent {
+        kubernetes {
+          yamlFile "agent-pod.yaml"
+        }
+      }
+    
+      steps {
+        container('busybox') {
+          sh 'cp -f site/* /data/fedora/'
+        }
+      }
+    }
   }
 }
