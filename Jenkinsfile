@@ -106,7 +106,7 @@ pipeline {
     
       steps {
         container('busybox') {
-          sh 'cp -f site/* /data/fedora/'
+          sh 'cp -rf site/* /data/fedora/'
         }
       }
     }
