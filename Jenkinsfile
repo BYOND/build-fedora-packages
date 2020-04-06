@@ -23,6 +23,7 @@ pipeline {
           stage('Build Common Package') {
             steps {
               container('rpmdev-fedora') {
+                sh "./process-releases.sh stable ${RELEASE} common"
                 sh 'rpmdev-setuptree'
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-common.spec'
@@ -36,6 +37,7 @@ pipeline {
           stage('Build DreamMaker Package') {
             steps {
               container('rpmdev-fedora') {
+                sh "./process-releases.sh stable ${RELEASE} dreammaker"
                 sh 'rpmdev-setuptree'
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-dreammaker.spec'
@@ -49,6 +51,7 @@ pipeline {
           stage('Build DreamDaemon Package') {
             steps {
               container('rpmdev-fedora') {
+                sh "./process-releases.sh stable ${RELEASE} dreamdaemon"
                 sh 'rpmdev-setuptree'
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-dreamdaemon.spec'
