@@ -24,6 +24,7 @@ pipeline {
             steps {
               container('rpmdev-fedora') {
                 sh "./process-releases.sh stable ${RELEASE} common"
+                sh "./process-releases.sh beta ${RELEASE} common"
                 sh 'rpmdev-setuptree'
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-common.spec'
@@ -38,6 +39,7 @@ pipeline {
             steps {
               container('rpmdev-fedora') {
                 sh "./process-releases.sh stable ${RELEASE} dreammaker"
+                sh "./process-releases.sh beta ${RELEASE} dreammaker"
                 sh 'rpmdev-setuptree'
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-dreammaker.spec'
@@ -52,6 +54,7 @@ pipeline {
             steps {
               container('rpmdev-fedora') {
                 sh "./process-releases.sh stable ${RELEASE} dreamdaemon"
+                sh "./process-releases.sh beta ${RELEASE} dreamdaemon"
                 sh 'rpmdev-setuptree'
                 sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
                 sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-dreamdaemon.spec'
@@ -106,7 +109,7 @@ pipeline {
           yamlFile "agent-pod.yaml"
         }
       }
-    
+
       steps {
         container('busybox') {
           sh 'cp -rf site/* /data/fedora/'
