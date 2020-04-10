@@ -56,8 +56,8 @@ pipeline {
                 sh 'gpg --batch --yes --export -a \'Stephen001 @ BYONDLabs <stephen001@byondlabs.io>\' > ~/rpmbuild/SOURCES/RPM-GPG-KEY-byondlabs'
                 sh "rpmbuild -bb --define '_releasever ${RELEASE}' specs/repo.spec"
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i686/Packages /data/fedora/${RELEASE}/base/x86_64/Packages"
-                sh "cp ~/rpmbuild/RPMS/noarch/byondlabs-release-${RELEASE}-1.noarch.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
-                sh "cp ~/rpmbuild/RPMS/noarch/byondlabs-release-${RELEASE}-1.noarch.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
+                sh "cp ~/rpmbuild/RPMS/noarch/byondlabs-release-${RELEASE}-*.noarch.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
+                sh "cp ~/rpmbuild/RPMS/noarch/byondlabs-release-${RELEASE}-*.noarch.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
               }
             }
           }
