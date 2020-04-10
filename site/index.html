@@ -39,6 +39,9 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#packages">Packages</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#beta">Beta Versions</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -63,7 +66,7 @@
             <li><a class="nav-link js-scroll-trigger" href="30/base/x86_64/Packages/byondlabs-release-30-1.noarch.rpm">Fedora 30</a></li>
           </ul>
           <p class="lead">Alternatively, you can install via the command line with:</p>
-            <p><kbd>sudo dnf install -y "https://fedora.byondlabs.io/$(. /etc/os-release; echo ${VERSION_ID})/base/x86_64/Packages/byondlabs-release-$(. /etc/os-release; echo ${VERSION_ID})-1.noarch.rpm"</kbd></p>
+            <p><kbd>sudo dnf install -y "https://fedora.byondlabs.io/$(. /etc/os-release; echo ${VERSION_ID})/base/x86_64/Packages/byondlabs-release-$(. /etc/os-release; echo ${VERSION_ID})-3.noarch.rpm"</kbd></p>
         </div>
       </div>
     </div>
@@ -81,6 +84,19 @@
           </ul>
           <p class="lead">In addition, there is an install group that can be used to get all BYOND packages:</p>
           <p><kbd>sudo dnf groupinstall BYOND</kbd></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beta">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Beta Versions</h2>
+          <p class="lead">This repository also provides access to BYOND Beta versions. These can be accessed by enabling the updates repository:</p>
+          <p><kbd>sudo dnf config-manager --set-enabled byondlabs-updates</kbd></p>
+          <p><kbd>sudo dnf update -y byond*</kbd></p>
         </div>
       </div>
     </div>
