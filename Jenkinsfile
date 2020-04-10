@@ -25,12 +25,6 @@ pipeline {
               container('rpmdev-fedora') {
                 sh "./process-releases.sh stable ${RELEASE} common"
                 sh "./process-releases.sh beta ${RELEASE} common"
-                sh 'rpmdev-setuptree'
-                sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
-                sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-common.spec'
-                sh "mkdir -p /data/fedora/${RELEASE}/base/i686/Packages /data/fedora/${RELEASE}/base/x86_64/Packages"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-common-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-common-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
               }
             }
           }
@@ -40,12 +34,6 @@ pipeline {
               container('rpmdev-fedora') {
                 sh "./process-releases.sh stable ${RELEASE} dreammaker"
                 sh "./process-releases.sh beta ${RELEASE} dreammaker"
-                sh 'rpmdev-setuptree'
-                sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
-                sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-dreammaker.spec'
-                sh "mkdir -p /data/fedora/${RELEASE}/base/i686/Packages /data/fedora/${RELEASE}/base/x86_64/Packages"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-dreammaker-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-dreammaker-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
               }
             }
           }
@@ -55,12 +43,6 @@ pipeline {
               container('rpmdev-fedora') {
                 sh "./process-releases.sh stable ${RELEASE} dreamdaemon"
                 sh "./process-releases.sh beta ${RELEASE} dreamdaemon"
-                sh 'rpmdev-setuptree'
-                sh 'cp /data/upstream/stable/512.1488/512.1488_byond_linux.zip ~/rpmbuild/SOURCES/'
-                sh 'rpmbuild -bb --define \'_byondmajor 512\' --define \'_byondminor 1488\' --define \'_releaseversion 1\' --target i686 specs/byond-dreamdaemon.spec'
-                sh "mkdir -p /data/fedora/${RELEASE}/base/i686/Packages /data/fedora/${RELEASE}/base/x86_64/Packages"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-dreamdaemon-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/i686/Packages/"
-                sh "cp ~/rpmbuild/RPMS/i686/byond-dreamdaemon-512.1488-1.fc${RELEASE}.i686.rpm /data/fedora/${RELEASE}/base/x86_64/Packages/"
               }
             }
           }
@@ -89,13 +71,22 @@ pipeline {
                 sh 'echo \'%_gpgbin /usr/bin/gpg\' >> ~/.rpmmacros'
                 sh "rpm --resign /data/fedora/${RELEASE}/base/i686/Packages/*.rpm"
                 sh "rpm --resign /data/fedora/${RELEASE}/base/x86_64/Packages/*.rpm"
+                sh "rpm --resign /data/fedora/${RELEASE}/updates/i686/Packages/*.rpm"
+                sh "rpm --resign /data/fedora/${RELEASE}/updates/x86_64/Packages/*.rpm"
                 sh "mkdir -p /data/fedora/${RELEASE}/base/i686/repodata /data/fedora/${RELEASE}/base/x86_64/repodata"
+                sh "mkdir -p /data/fedora/${RELEASE}/updates/i686/repodata /data/fedora/${RELEASE}/updates/x86_64/repodata"
                 sh "cp group.xml /data/fedora/${RELEASE}/base/i686/repodata/"
                 sh "cp group.xml /data/fedora/${RELEASE}/base/x86_64/repodata/"
+                sh "cp group.xml /data/fedora/${RELEASE}/updates/i686/repodata/"
+                sh "cp group.xml /data/fedora/${RELEASE}/updates/x86_64/repodata/"
                 sh "createrepo -g repodata/group.xml /data/fedora/${RELEASE}/base/i686"
                 sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/i686/repodata/repomd.xml"
                 sh "createrepo -g repodata/group.xml /data/fedora/${RELEASE}/base/x86_64"
                 sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/base/x86_64/repodata/repomd.xml"
+                sh "createrepo -g repodata/group.xml /data/fedora/${RELEASE}/updates/i686"
+                sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/updates/i686/repodata/repomd.xml"
+                sh "createrepo -g repodata/group.xml /data/fedora/${RELEASE}/updates/x86_64"
+                sh "gpg --batch --yes --detach-sign --armor /data/fedora/${RELEASE}/updates/x86_64/repodata/repomd.xml"
               }
             }
           }
