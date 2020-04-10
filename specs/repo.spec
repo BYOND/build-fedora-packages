@@ -1,6 +1,6 @@
 Name:       byondlabs-release
 Version:    %{_releasever}
-Release:    1
+Release:    2
 Summary:    BYONDLabs Repository Installer
 URL:        https://fedora.byondlabs.io/
 License:    GPLv3
@@ -44,5 +44,7 @@ ln -s $(basename %{SOURCE3}) %{buildroot}%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-
 %config(noreplace) %{_sysconfdir}/yum.repos.d/byondlabs-testing.repo
 
 %changelog
+* Sat Apr 10 2020 Stephen001 <stephen001@byondlabs.io> - %{_releasever}-2
+- Included the option to consume beta builds
 * Mon Mar 23 2020 Stephen001 <stephen001@byondlabs.io> - %{_releasever}-1
 - Built to deploy repositories

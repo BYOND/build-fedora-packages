@@ -1,6 +1,6 @@
-[byondlabs-testing]
-name=BYONDLabs Testing for Fedora $releasever
-baseurl=https://fedora.byondlabs.io/$releasever/testing/$basearch/
+[byondlabs-updates]
+name=BYONDLabs Beta Updates for Fedora $releasever
+baseurl=https://fedora.byondlabs.io/$releasever/updates/$basearch/
 enabled=0
 metadata_expire=14d
 type=rpm-md
