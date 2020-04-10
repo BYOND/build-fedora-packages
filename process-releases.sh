@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
-
 UPSTREAM_TYPE=${1}
 RELEASE=${2}
 PACKAGE=${3}
@@ -16,7 +14,7 @@ mkdir -p /data/fedora/${RELEASE}/${DOWNSTREAM_TYPE}/i686/Packages /data/fedora/$
 
 VERSIONS=($(comm -2 -3 <(ls /data/upstream/${UPSTREAM_TYPE}) <(ls /data/fedora/${RELEASE}/${DOWNSTREAM_TYPE}/i686/Packages/ | grep ${PACKAGE} | cut -d '-' -f 3)))
 
-if [ "${#VERSIONS[@]}" -gt "1" ]; then
+if [ "${#VERSIONS[@]}" -gt "0" ]; then
   echo "Processing new versions"
   for VERSION in "${VERSIONS[@]}"; do
       echo "Processing ${i} for Fedora ${RELEASE} ${DOWNSTREAM_TYPE}"
