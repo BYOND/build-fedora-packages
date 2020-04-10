@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -x
 
 UPSTREAM_TYPE=${1}
 RELEASE=${2}
