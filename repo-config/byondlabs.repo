@@ -2,7 +2,7 @@
 name=BYONDLabs for Fedora $releasever
 baseurl=https://fedora.byondlabs.io/$releasever/base/$basearch/
 enabled=1
-metadata_expire=14d
+metadata_expire=6h
 type=rpm-md
 gpgcheck=1
 repo_gpgcheck=1

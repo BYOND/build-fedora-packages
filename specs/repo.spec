@@ -1,6 +1,6 @@
 Name:       byondlabs-release
 Version:    %{_releasever}
-Release:    2
+Release:    3
 Summary:    BYONDLabs Repository Installer
 URL:        https://fedora.byondlabs.io/
 License:    GPLv3

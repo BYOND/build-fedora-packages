@@ -2,7 +2,7 @@
 name=BYONDLabs Beta Updates for Fedora $releasever
 baseurl=https://fedora.byondlabs.io/$releasever/updates/$basearch/
 enabled=0
-metadata_expire=14d
+metadata_expire=6h
 type=rpm-md
 gpgcheck=1
 repo_gpgcheck=1
