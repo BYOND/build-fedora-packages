@@ -1,6 +1,6 @@
 Name:       byondlabs-release
 Version:    %{_releasever}
-Release:    3
+Release:    4
 Summary:    BYONDLabs Repository Installer
 URL:        https://fedora.byondlabs.io/
 License:    GPLv3
@@ -31,6 +31,7 @@ install -d -m755 \
 ln -s $(basename %{SOURCE3}) %{buildroot}%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-byondlabs-fedora-30
 ln -s $(basename %{SOURCE3}) %{buildroot}%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-byondlabs-fedora-31
 ln -s $(basename %{SOURCE3}) %{buildroot}%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-byondlabs-fedora-32
+ln -s $(basename %{SOURCE3}) %{buildroot}%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-byondlabs-fedora-33
 ln -s $(basename %{SOURCE3}) %{buildroot}%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-byondlabs-fedora-rawhide
 
 %{__install} -p -m644 \
@@ -44,6 +45,10 @@ ln -s $(basename %{SOURCE3}) %{buildroot}%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-
 %config(noreplace) %{_sysconfdir}/yum.repos.d/byondlabs-testing.repo
 
 %changelog
+* Mon Jan 4 2021 Stephen001 <stephen001@byondlabs.io> - %{_releasever}-4
+- Added Fedora 33 signing key
+* Sat Apr 10 2020 Stephen001 <stephen001@byondlabs.io> - %{_releasever}-3
+- Included the option to consume beta builds
 * Sat Apr 10 2020 Stephen001 <stephen001@byondlabs.io> - %{_releasever}-2
 - Included the option to consume beta builds
 * Mon Mar 23 2020 Stephen001 <stephen001@byondlabs.io> - %{_releasever}-1
